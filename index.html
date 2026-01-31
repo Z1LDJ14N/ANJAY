@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYZ ZENITH | BY ZILDJIAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0070f3;
+            --accent: #00dfd8;
+            --bg: #020617;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); color: var(--white); 
+            min-height: 100vh; overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes slideIn { from { opacity: 0; transform: scale(0.9) translateY(30px); filter: blur(10px); } to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .page { display: none; padding: 40px 20px; animation: slideIn 0.7s cubic-bezier(0.4, 0, 0.2, 1); max-width: 1000px; margin: 0 auto; }
+        .active { display: block; }
+
+        /* --- UI ELEMENTS --- */
+        .logo { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--primary); animation: float 4s infinite ease-in-out; margin-bottom: 20px; box-shadow: 0 0 40px rgba(0, 112, 243, 0.3); }
+        .glass-card { background: var(--card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+        
+        /* --- TERMINAL --- */
+        .termux { background: #000; border-radius: 12px; border: 1px solid var(--border); font-family: 'Fira Code', monospace; overflow: hidden; margin: 20px 0; }
+        .t-header { background: #111; padding: 10px 15px; font-size: 0.7rem; color: #888; display: flex; justify-content: space-between; }
+        .t-body { padding: 15px; height: 200px; overflow-y: auto; color: #00ff00; font-size: 0.85rem; }
+        .t-input-area { background: #000; padding: 10px 15px; border-top: 1px solid var(--border); display: flex; gap: 10px; }
+        .t-input { background: transparent; border: none; color: white; outline: none; width: 100%; font-family: inherit; }
+
+        /* --- BUTTONS --- */
+        .btn { padding: 15px 30px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; transition: 0.3s; background: var(--primary); color: white; }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .back-btn { background: transparent; border: 1px solid var(--border); color: #888; margin-bottom: 20px; }
+
+        .highlight { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div id="page-1" class="page active" style="text-align: center; padding-top: 100px;">
+        <img src="https://autoresbot.com/tmp_files/7f9a5a8b-3675-4e5c-91fa-c43a013f6ed5.jpg" class="logo">
+        <h1 style="font-size: 3rem;">XYZ <span class="highlight">ZENITH</span></h1>
+        <p style="opacity: 0.6; letter-spacing: 4px; margin-bottom: 30px;">BY ZILDJIAN</p>
+        <button class="btn" onclick="showPage(2)">INITIALIZE SYSTEM</button>
+    </div>
+
+    <div id="page-2" class="page">
+        <h2 class="highlight">Core Dashboard</h2>
+        <p style="margin-bottom: 25px;">Welcome back, <b>ZILDJIAN</b>. System is stable.</p>
+        <div class="grid">
+            <div class="glass-card" onclick="showPage(3)"><h3>Web Academy</h3><p>Materi Dev</p></div>
+            <div class="glass-card" onclick="showPage(4)"><h3>Bot Academy</h3><p>Automasi</p></div>
+            <div class="glass-card" onclick="showPage(5)"><h3>Design Academy</h3><p>UI/UX Art</p></div>
+            <div class="glass-card" onclick="showPage(6)"><h3>Store</h3><p>Get Premium</p></div>
+            <div class="glass-card" onclick="showPage(7)"><h3>Contact</h3><p>Owner Profile</p></div>
+            <div class="glass-card" onclick="showPage(8)"><h3>Terminal</h3><p>Full Shell</p></div>
+        </div>
+    </div>
+
+    <div id="page-3" class="page">
+        <button class="btn back-btn" onclick="showPage(2)">← Dashboard</button>
+        <h1 class="highlight">Web Masterclass</h1>
+        <div class="glass-card">
+            <h3>Module 01: Frontend</h3>
+            <p>Fokus pada <b>React & Next.js</b> untuk performa web terbaik di 2026.</p>
+        </div>
+        <div class="glass-card">
+            <h3>Module 02: Backend</h3>
+            <p>Implementasi <b>Node.js & Supabase</b> sebagai database cloud.</p>
+        </div>
+    </div>
+
+    <div id="page-4" class="page">
+        <button class="btn back-btn" onclick="showPage(2)">← Dashboard</button>
+        <h1 class="highlight">Bot Engineering</h1>
+        <div class="glass-card">
+            <h3>Module 01: Baileys Tech</h3>
+            <p>Handling WhatsApp Socket secara multi-device & encrypted.</p>
+        </div>
+        <div class="glass-card">
+            <h3>Module 02: AI Integration</h3>
+            <p>Menyambungkan bot dengan LLM (Large Language Model) via API.</p>
+        </div>
+    </div>
+
+    <div id="page-5" class="page">
+        <button class="btn back-btn" onclick="showPage(2)">← Dashboard</button>
+        <h1 class="highlight">UI/UX Strategy</h1>
+        <div class="glass-card">
+            <h3>Visual Hierarchy</h3>
+            <p>Mengatur elemen agar user langsung fokus ke tombol utama.</p>
+        </div>
+    </div>
+
+    <div id="page-6" class="page" style="text-align: center;">
+        <button class="btn back-btn" onclick="showPage(2)">← Dashboard</button>
+        <h1 class="highlight">Premium Store</h1>
+        <div class="glass-card" style="margin-top: 20px;">
+            <p>Akses Selamanya (Life Time)</p>
+            <h1 style="font-size: 3rem; margin: 15px 0;">IDR 5K</h1>
+            <div style="background: var(--primary); padding: 15px; border-radius: 12px;">
+                <p>DANA / GOPAY: <b>6285183122570</b></p>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.5;">Owner: ZILDJIAN</p>
+        </div>
+    </div>
+
+    <div id="page-7" class="page">
+        <button class="btn back-btn" onclick="showPage(2)">← Dashboard</button>
+        <h1 class="highlight">Contact Owner</h1>
+        <div class="glass-card">
+            <h3>Owner Name: ZILDJIAN</h3>
+            <p>User ID: 139814624075899@lid</p>
+            <p style="margin-top: 10px;">WhatsApp: 6285183122570</p>
+            <p>Bot Name: V1-XYZ PRO</p>
+        </div>
+    </div>
+
+    <div id="page-8" class="page">
+        <button class="btn back-btn" onclick="showPage(2)">← Exit Shell</button>
+        <h1 class="highlight" style="margin-bottom: 20px;">Termux Shell v2.0</h1>
+        <div class="termux" style="height: 450px;">
+            <div class="t-header"><span>zildjian@xyz:~/shell</span><span>CPU: 12%</span></div>
+            <div class="t-body" id="full-t-output">
+                <div>> Kernel XYZ Loaded Successfully...</div>
+                <div>> Connected to ZILDJIAN_CLOUD_SERVER</div>
+                <div>> Type 'help' for list of commands.</div>
+            </div>
+            <div class="t-input-area">
+                <span style="color: #00ff00;">$</span>
+                <input type="text" id="full-t-input" class="t-input" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(n) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + n).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        const input = document.getElementById('full-t-input');
+        const output = document.getElementById('full-t-output');
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value.toLowerCase().trim();
+                const userLine = document.createElement('div');
+                userLine.innerHTML = `<span style="color: white;">$ ${cmd}</span>`;
+                output.appendChild(userLine);
+
+                const response = document.createElement('div');
+                if(cmd === 'help') {
+                    response.innerHTML = 'Commands: web, bot, store, contact, clear, owner, hack';
+                } else if(cmd === 'web') {
+                    response.innerHTML = 'Switching to Academy...'; setTimeout(() => showPage(3), 500);
+                } else if(cmd === 'owner') {
+                    response.innerHTML = 'Owner: ZILDJIAN | Status: GOD MODE';
+                } else if(cmd === 'hack') {
+                    response.innerHTML = '<span style="color:red">Accessing Database... [FAILED] - Auth Required!</span>';
+                } else if(cmd === 'clear') {
+                    output.innerHTML = '<div>Terminal Cleared.</div>';
+                } else {
+                    response.innerHTML = 'Command not found. Type "help"';
+                }
+
+                output.appendChild(response);
+                input.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+    </script>
+</body>
+              </html>
