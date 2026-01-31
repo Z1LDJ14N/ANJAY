@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYZ ULTIMATE ENGINE | BY ZILDJIAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0070f3;
+            --accent: #00dfd8;
+            --termux-bg: #000000;
+            --termux-text: #00ff00;
+            --bg: #020617;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: var(--white); 
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- ANIMASI AWAL (BLUR & FLOAT) --- */
+        @keyframes blurReveal {
+            from { filter: blur(30px); opacity: 0; transform: scale(1.1); }
+            to { filter: blur(0); opacity: 1; transform: scale(1); }
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .slide { display: none; padding: 40px 20px; animation: blurReveal 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        .active { display: block; }
+
+        /* --- LANDING --- */
+        #slide-1 { 
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+        }
+        .logo-main {
+            width: 150px; height: 150px; border-radius: 50%;
+            border: 4px solid var(--primary); margin-bottom: 25px;
+            animation: float 4s infinite ease-in-out;
+            box-shadow: 0 0 50px rgba(0, 112, 243, 0.3);
+        }
+
+        /* --- TERMUX SIMULATOR --- */
+        .termux-container {
+            background: var(--termux-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            max-width: 800px; margin: 30px auto;
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+        }
+        .termux-header {
+            background: #1e1e1e; padding: 10px 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .termux-body {
+            padding: 20px; height: 350px; overflow-y: auto;
+            font-size: 0.85rem; color: var(--termux-text);
+        }
+        .termux-input-line {
+            display: flex; gap: 8px; align-items: center; padding: 10px 20px;
+            background: #000; border-top: 1px solid #111;
+        }
+        .t-input {
+            background: transparent; border: none; color: white;
+            outline: none; width: 100%; font-family: inherit;
+        }
+
+        /* --- FEATURE GRID --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .feature-card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border);
+            transition: 0.4s; cursor: pointer;
+        }
+        .feature-card:hover {
+            background: rgba(0, 112, 243, 0.1);
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        /* --- MATERI SLIDES --- */
+        .content-box { background: var(--glass); padding: 30px; border-radius: 24px; margin-top: 25px; }
+        .back-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 8px 20px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; }
+
+        /* --- BUTTONS --- */
+        .btn-launch {
+            padding: 18px 45px; border-radius: 50px; border: none;
+            background: var(--primary); color: white; font-weight: 800;
+            cursor: pointer; letter-spacing: 2px; transition: 0.3s;
+        }
+        .btn-launch:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--primary); }
+
+        .highlight { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div id="slide-1" class="slide active">
+        <img src="https://autoresbot.com/tmp_files/7f9a5a8b-3675-4e5c-91fa-c43a013f6ed5.jpg" class="logo-main">
+        <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 10px;">V1-<span class="highlight">XYZ</span> PRO</h1>
+        <p style="color: var(--gray); font-weight: 600; letter-spacing: 5px; opacity: 0.7; margin-bottom: 40px;">BY ZILDJIAN</p>
+        <button class="btn-launch" onclick="nextSlide(2)">INITIALIZE ENGINE</button>
+    </div>
+
+    <div id="slide-2" class="slide">
+        <div class="container" style="max-width: 1000px; margin: 0 auto;">
+            <header style="text-align: center; margin-bottom: 20px;">
+                <h1>Terminal <span class="highlight">Access</span></h1>
+                <p>Type <span style="color:white">'menu'</span> inside termux to start</p>
+            </header>
+
+            <div class="termux-container">
+                <div class="termux-header">
+                    <span style="font-size: 0.7rem; font-weight: bold;">TERMUX SIMULATOR - v2.0.26</span>
+                    <div style="display:flex; gap:5px;"><div class="dot" style="width:10px;height:10px;border-radius:50%;background:#ff5f56"></div><div class="dot" style="width:10px;height:10px;border-radius:50%;background:#27c93f"></div></div>
+                </div>
+                <div class="termux-body" id="t-output">
+                    <div>Welcome to Termux!</div>
+                    <div>Working directory: <span style="color:var(--accent)">/home/zildjian/xyz_pro</span></div>
+                    <div>Bot Status: <span style="color:#27c93f">Online & Secure</span></div>
+                    <div style="margin-top:10px; color:#fff">Type <span class="highlight">'help'</span> for command list.</div>
+                </div>
+                <div class="termux-input-line">
+                    <span style="color: #00ff00;">$</span>
+                    <input type="text" id="t-input" class="t-input" autofocus>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card" onclick="nextSlide(3)">
+                    <h3>📚 Modul Belajar</h3>
+                    <p>Materi Web & Bot terlengkap.</p>
+                </div>
+                <div class="feature-card" onclick="nextSlide(4)">
+                    <h3>🛒 Premium Store</h3>
+                    <p>Upgrade ke V1-XYZ PRO.</p>
+                </div>
+                <div class="feature-card" onclick="window.open('https://whatsapp.com/channel/0029VbCH9SfCHDyseo0hGB3o')">
+                    <h3>📢 XYZ Channel</h3>
+                    <p>Update script terbaru.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide-3" class="slide">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <button class="back-btn" onclick="nextSlide(2)">← BACK</button>
+            <h1 class="highlight">Academy Center</h1>
+            <div class="content-box">
+                <h2>1. Web Development</h2>
+                <p>Mulai dengan <code>HTML5</code>, <code>TailwindCSS</code>, dan <code>Vercel Deployment</code>.</p>
+                <hr style="margin: 15px 0; opacity: 0.1;">
+                <h2>2. Bot Automation</h2>
+                <p>Pelajari <code>Baileys Library</code>, <code>NodeJS</code>, dan <code>Scraping Technology</code>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide-4" class="slide">
+        <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <button class="back-btn" onclick="nextSlide(2)">← BACK</button>
+            <h1 class="highlight">Premium Membership</h1>
+            <div class="content-box">
+                <p>Dapatkan akses Full Script & Database Premium.</p>
+                <h1 style="margin: 20px 0; font-size: 3rem;">5K <span style="font-size: 1rem;">/ Bulan</span></h1>
+                <div style="background: var(--primary); padding: 20px; border-radius: 15px;">
+                    <p>GOPAY / DANA</p>
+                    <h2>6285183122570</h2>
+                </div>
+                <p style="margin-top: 15px; opacity: 0.6;">Kirim bukti bayar ke Owner ZILDJIAN</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide-' + n).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        const tInput = document.getElementById('t-input');
+        const tOutput = document.getElementById('t-output');
+
+        tInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const val = tInput.value.toLowerCase().trim();
+                const line = document.createElement('div');
+                line.innerHTML = `<span style="color:#fff">$ ${val}</span>`;
+                tOutput.appendChild(line);
+
+                const response = document.createElement('div');
+                
+                switch(val) {
+                    case 'help':
+                        response.innerHTML = 'Commands: menu, web, premium, owner, clear, time';
+                        break;
+                    case 'menu':
+                    case 'web':
+                        response.innerHTML = 'Opening Dashboard...';
+                        setTimeout(() => nextSlide(3), 800);
+                        break;
+                    case 'premium':
+                        response.innerHTML = 'Checking payment gateway...';
+                        setTimeout(() => nextSlide(4), 800);
+                        break;
+                    case 'owner':
+                        response.innerHTML = 'Owner: ZILDJIAN | ID: 139814624075899@lid';
+                        break;
+                    case 'time':
+                        response.innerHTML = 'Current Time: ' + new Date().toLocaleString();
+                        break;
+                    case 'clear':
+                        tOutput.innerHTML = '<div>Terminal cleared.</div>';
+                        break;
+                    default:
+                        response.innerHTML = `<span style="color:#ff5f56;">[!] Unknown command: ${val}</span>`;
+                }
+
+                tOutput.appendChild(response);
+                tInput.value = '';
+                tOutput.scrollTop = tOutput.scrollHeight;
+            }
+        });
+    </script>
+</body>
+                                                                                                                                                     </html>
